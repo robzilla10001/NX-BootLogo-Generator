@@ -13,6 +13,10 @@ on:
         description: 'Optional note'
         required: false
         default: ''
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build-patches:
     runs-on: ubuntu-latest
@@ -81,7 +85,7 @@ jobs:
             ( cd "build/${name}" && zip -r "../../patches/${VERSION}/${name}.zip" atmosphere )
           done <<< "$FILES"
       - name: Open PR with generated patches
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "Regenerate boot logo patches for ${{ github.event.inputs.version }}"
           branch: "patches/${{ github.event.inputs.version }}"

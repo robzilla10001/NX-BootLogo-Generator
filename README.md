@@ -1,7 +1,7 @@
 # NX-BootLogo-Generator
 ## What is this?
 
-This is a script designed to run on a schedule to convert properly formatted
+This is a workflow designed to run on on demand to convert properly formatted
 PNG files (308x350) to IPS files needed to get the bootlogo to work on a
 modified Switch. That is the only thing this repo does, and as far as I can
 tell right now, it's all it will ever do. I can't think of anything else

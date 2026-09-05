@@ -38,7 +38,7 @@ jobs:
             echo "eligible=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Approve and enable auto-merge
+      - name: Approve as bot
         if: steps.check.outputs.eligible == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,6 +48,15 @@ jobs:
           set -euo pipefail
           gh pr review "$PR_NUMBER" --repo "$REPO" --approve \
             --body "Auto-approved: this PR only adds/updates images under bootlogos/."
+
+      - name: Merge using a real user token (so the push triggers downstream workflows)
+        if: steps.check.outputs.eligible == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.PATCH_APPROVER_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
           gh pr merge "$PR_NUMBER" --repo "$REPO" --auto --squash --delete-branch
 
       - name: Leave a note for anything else

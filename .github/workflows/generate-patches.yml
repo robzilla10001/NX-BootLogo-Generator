@@ -85,7 +85,8 @@ jobs:
             ( cd "build/${name}" && zip -r "../../patches/${VERSION}/${name}.zip" atmosphere )
           done <<< "$FILES"
       - name: Open PR with generated patches
-        uses: peter-evans/create-pull-request@v7
+        id: cpr
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "Regenerate boot logo patches for ${{ github.event.inputs.version }}"
           branch: "patches/${{ github.event.inputs.version }}"
@@ -100,3 +101,11 @@ jobs:
           add-paths: |
             patches/${{ github.event.inputs.version }}/*.zip
           delete-branch: true
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          gh pr merge --auto --squash --delete-branch "$PR_NUMBER" \
+            --repo "${{ github.repository }}"

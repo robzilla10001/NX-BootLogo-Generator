@@ -57,7 +57,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          gh pr merge "$PR_NUMBER" --repo "$REPO" --auto --squash --delete-branch
+          gh api "repos/${REPO}/pulls/${PR_NUMBER}/merge" -X PUT -f merge_method=squash
 
       - name: Leave a note for anything else
         if: steps.check.outputs.eligible == 'false'

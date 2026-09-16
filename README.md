@@ -9,7 +9,7 @@ waiting on a new release of libnx/DevKitPro as well. Just to be sure all bases a
 
 # NX-BootLogo-Generator
 ## IMPORTANT  
-This is currently only compatible up to 22.5.0. Standby for new Atmosphere release and updated script
+This is currently only compatible up to 23.0.0. Standby for new Atmosphere release and updated script
 to support the new firmware.
 
 ## What is this?
@@ -21,6 +21,6 @@ tell right now, it's all it will ever do. I can't think of anything else
 that fits with the goal of this project.
 
 ## Thanks
-[impeeza](https://github.com/impeeza) - assisted with up to date script for converting images  
+[impeeza](https://github.com/impeeza) - assisted with up to date script for converting images, new offsets  
 [friedkeenan](https://github.com/friedkeenan) - created the script initially  
 [GBATemp](https://gbatemp.net) - for being there  

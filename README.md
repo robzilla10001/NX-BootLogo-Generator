@@ -1,9 +1,3 @@
-<div align="center">IMPORTANT NOTICE  
-  
-16/10/2026: ATMOSPHERE 1.12.1 FOR HOS 23.0.1 RELEASED  
-
-Atmosphere has been updated; BornToHonk's fork released with baked in sigpatches.</div>
-
 # NX-BootLogo-Generator
 ## IMPORTANT  
 This is currently only compatible up to 23.0.0. Standby for new Atmosphere release and updated script

@@ -1,6 +1,6 @@
 # NX-BootLogo-Generator
 ## IMPORTANT  
-This is currently only compatible up to 23.0.0. Standby for new Atmosphere release and updated script
+This is currently only compatible up to 23.0.1. New Atmosphere released, updating script
 to support the new firmware.
 
 ## What is this?
